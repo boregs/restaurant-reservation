@@ -1,9 +1,12 @@
 package br.com.rafael.restaurant_booking.model;
 
+import br.com.rafael.restaurant_booking.enums.BookingStatus;
 import jakarta.persistence.*;
-import org.hibernate.annotations.UuidGenerator;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.Generated;
+import org.hibernate.generator.EventType;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.UUID;
 
 @Entity
@@ -11,40 +14,57 @@ import java.util.UUID;
 public class ReservationModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "booking_id", nullable = false)
+    private Long id;
 
-    @Id
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "customer_id", nullable = false)
     private CustomerModel bookerId;
 
-    @UuidGenerator
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @Generated(event = EventType.INSERT)
+    @ColumnDefault("gen_random_uuid()")
+    @Column(name = "booking_uuid", nullable = false, unique = true, insertable = false, updatable = false)
     private UUID uuid;
 
+    @Column(name = "people_count", nullable = false)
     private int people;
-    private Date bookingDate;
-    private Date createdAt;
-    private Date updatedAt;
-    private boolean confirmed;
-    private String status;
 
-    public ReservationModel(int id, CustomerModel bookerId, UUID uuid, int people, Date bookingDate,
-                            Date createdAt, Date updatedAt, boolean confirmed, String status) {
-        this.id = id;
-        this.bookerId = bookerId;
-        this.uuid = uuid;
-        this.people = people;
-        this.bookingDate = bookingDate;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.confirmed = confirmed;
-        this.status = status;
+    @Column(name = "booking_datetime", nullable = false)
+    private Instant bookingDateTime;
+
+    @Generated(event = EventType.INSERT)
+    @ColumnDefault("now()")
+    @Column(name = "created_at", nullable = false, insertable = false, updatable = false)
+    private Instant createdAt;
+
+    @Generated(event = {EventType.INSERT, EventType.UPDATE})
+    @ColumnDefault("now()")
+    @Column(name = "updated_at", nullable = false, insertable = false, updatable = false)
+    private Instant updatedAt;
+
+    @ColumnDefault("false")
+    @Column(name = "confirmed", nullable = false)
+    private boolean confirmed;
+
+    @Enumerated(EnumType.STRING)
+    @ColumnDefault("'ACTIVE'")
+    @Column(name = "status", nullable = false, length = 20)
+    private BookingStatus status = BookingStatus.ACTIVE;
+
+    public ReservationModel() {
     }
 
-    public int getId() {
+    public ReservationModel(CustomerModel bookerId, int people, Instant bookingDateTime) {
+        this.bookerId = bookerId;
+        this.people = people;
+        this.bookingDateTime = bookingDateTime;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -60,10 +80,6 @@ public class ReservationModel {
         return uuid;
     }
 
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
-
     public int getPeople() {
         return people;
     }
@@ -72,20 +88,20 @@ public class ReservationModel {
         this.people = people;
     }
 
-    public Date getBookingDate() {
-        return bookingDate;
+    public Instant getBookingDateTime() {
+        return bookingDateTime;
     }
 
-    public void setBookingDate(Date bookingDate) {
-        this.bookingDate = bookingDate;
+    public void setBookingDateTime(Instant bookingDateTime) {
+        this.bookingDateTime = bookingDateTime;
     }
 
-    public Date getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public Instant getUpdatedAt() {
+        return updatedAt;
     }
 
     public boolean isConfirmed() {
@@ -96,19 +112,11 @@ public class ReservationModel {
         this.confirmed = confirmed;
     }
 
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public String getStatus() {
+    public BookingStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(BookingStatus status) {
         this.status = status;
     }
 }

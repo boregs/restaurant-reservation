@@ -1,9 +1,11 @@
 package br.com.rafael.restaurant_booking.model;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.UuidGenerator;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.Generated;
+import org.hibernate.generator.EventType;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.UUID;
 
 @Entity
@@ -11,42 +13,58 @@ import java.util.UUID;
 public class CustomerModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "customer_id", nullable = false)
+    private Long id;
 
+    @Column(name = "first_name", nullable = false, length = 100)
     private String name;
+
+    @Column(name = "last_name", nullable = false, length = 100)
     private String surname;
+
+    @Column(name = "email", nullable = false, unique = true, length = 255)
     private String email;
+
+    @Column(name = "phone", nullable = false, length = 20)
     private String phoneNumber;
+
+    @Column(name = "cpf", unique = true, length = 11)
     private String cpf;
 
-    @UuidGenerator
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @Generated(event = EventType.INSERT)
+    @ColumnDefault("gen_random_uuid()")
+    @Column(name = "uuid", nullable = false, unique = true, insertable = false, updatable = false)
     private UUID uuid;
 
+    @ColumnDefault("false")
+    @Column(name = "is_phone_verified", nullable = false)
     private boolean isPhoneNumberVerified;
-    private boolean isEmailVerified;
-    private Date createdAt;
 
-    public CustomerModel(int id, String name, String surname,
-                         String email, String phoneNumber, String cpf, UUID uuid,
-                         boolean isPhoneNumberVerified, boolean isEmailVerified, Date createdAt) {
-        this.id = id;
+    @ColumnDefault("false")
+    @Column(name = "is_email_verified", nullable = false)
+    private boolean isEmailVerified;
+
+    @Generated(event = EventType.INSERT)
+    @ColumnDefault("now()")
+    @Column(name = "created_at", nullable = false, insertable = false, updatable = false)
+    private Instant createdAt;
+
+    public CustomerModel() {
+    }
+
+    public CustomerModel(String name, String surname, String email, String phoneNumber, String cpf) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.cpf = cpf;
-        this.uuid = uuid;
-        this.isPhoneNumberVerified = isPhoneNumberVerified;
-        this.isEmailVerified = isEmailVerified;
-        this.createdAt = createdAt;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -94,10 +112,6 @@ public class CustomerModel {
         return uuid;
     }
 
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
-
     public boolean isPhoneNumberVerified() {
         return isPhoneNumberVerified;
     }
@@ -114,11 +128,8 @@ public class CustomerModel {
         isEmailVerified = emailVerified;
     }
 
-    public Date getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
 }
