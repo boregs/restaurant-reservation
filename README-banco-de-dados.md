@@ -101,6 +101,8 @@ Armazena as mesas disponíveis para gerenciamento pelo restaurante.
 | `table_capacity` | `INTEGER` | Não | `1` | — | Quantidade de pessoas que a mesa comporta. |
 | `table_location` | `VARCHAR(20)` | Não | `'INTERIOR'` | `CHECK(table_location IN ('INTERIOR', 'EXTERIOR'))` | Localização da mesa. |
 | `table_status` | `VARCHAR(20)` | Não | `'AVAILABLE'` | `CHECK (table_status IN ('AVAILABLE', 'NOT-AVAILABLE'))` | Status da mesa. |
+| `created_at` | `TIMESTAMPTZ` | Não | `'now()` | - | Instante de cadastro da mesa. |
+| `updated_at` | `TIMESTAMPTZ` | Não | `now()` | - | Instante de atualização do registro da mesa. |
 
 O script não define `CHECK` para capacidade, localização ou status. Portanto, `INSIDE` e `AVAILABLE` são valores padrão, não listas de valores permitidos.
 
