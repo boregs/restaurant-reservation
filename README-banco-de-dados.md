@@ -99,8 +99,8 @@ Armazena as mesas disponíveis para gerenciamento pelo restaurante.
 | `table_id` | `SERIAL` (`INTEGER`) | Não | Sequência automática | `PRIMARY KEY` | Identificador interno da mesa. |
 | `table_uuid` | `UUID` | Não | `gen_random_uuid()` | `UNIQUE` | Identificador UUID da mesa. |
 | `table_capacity` | `INTEGER` | Não | `1` | — | Quantidade de pessoas que a mesa comporta. |
-| `table_location` | `VARCHAR(20)` | Não | `'INSIDE'` | — | Localização da mesa. |
-| `table_status` | `VARCHAR(10)` | Não | `'AVAILABLE'` | — | Status da mesa. |
+| `table_location` | `VARCHAR(20)` | Não | `'INTERIOR'` | `CHECK(table_location IN ('INTERIOR', 'EXTERIOR'))` | Localização da mesa. |
+| `table_status` | `VARCHAR(20)` | Não | `'AVAILABLE'` | `CHECK (table_status IN ('AVAILABLE', 'NOT-AVAILABLE'))` | Status da mesa. |
 
 O script não define `CHECK` para capacidade, localização ou status. Portanto, `INSIDE` e `AVAILABLE` são valores padrão, não listas de valores permitidos.
 
