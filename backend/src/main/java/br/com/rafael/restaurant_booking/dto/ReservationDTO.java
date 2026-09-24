@@ -1,7 +1,7 @@
 package br.com.rafael.restaurant_booking.dto;
 
 public class ReservationDTO {
-    private int reservationId;
+    private Long reservationId;
     private String bookerName;
     private int people;
     private String date;
@@ -9,7 +9,7 @@ public class ReservationDTO {
     private String updatedAt;
     private String status;
 
-    public ReservationDTO(int reservationId, String bookerName, int people, String date, String createdAt, String updatedAt, String status) {
+    public ReservationDTO(Long reservationId, String bookerName, int people, String date, String createdAt, String updatedAt, String status) {
         this.reservationId = reservationId;
         this.bookerName = bookerName;
         this.people = people;
@@ -19,11 +19,11 @@ public class ReservationDTO {
         this.status = status;
     }
 
-    public int getReservationId() {
+    public Long getReservationId() {
         return reservationId;
     }
 
-    public void setReservationId(int reservationId) {
+    public void setReservationId(Long reservationId) {
         this.reservationId = reservationId;
     }
 
