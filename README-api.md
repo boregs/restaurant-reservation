@@ -1,8 +1,15 @@
 # API — Sistema de Booking de Mesas de Restaurante
 
-## Tecnologias
+## Tecnologias Atuais
 - Java 17
 - Spring Boot
+
+## Tecnologias futuras
+- Kafka
+- RabbitMQ
+- Typescript
+- React.js
+- OAuth 2.0
 
 ## Endpoints levantados
 
