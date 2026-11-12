@@ -2,8 +2,6 @@
 
 A multi-restaurant table booking platform. Customers choose a table on a restaurant's floor plan, verify their email and manage their booking from the links they receive by email. Restaurant staff manage tables, opening hours and bookings from an admin panel.
 
-> **Project status:** early development. The backend is a Spring Boot skeleton with JPA entities and stub endpoints; the database is being rewritten to match the [target schema](docs/database.md). The documentation describes the **full target design** and marks each item with its status.
-
 | Marker | Meaning |
 |---|---|
 | ✅ | Implemented |
@@ -50,15 +48,15 @@ The reasons behind the main choices are recorded in [Architecture Decision Recor
 
 ```
 .
-├── README.md                 ← you are here
+├── README.md                 
 ├── docs/
-│   ├── business-rules.md     ← requirements, booking rules and lifecycle
-│   ├── architecture.md       ← components, flows, security, configuration
-│   ├── api.md                ← REST API design
-│   ├── database.md           ← target PostgreSQL schema
-│   ├── glossary.md           ← domain terms (EN ↔ PT)
-│   └── adr/                  ← architecture decision records
-└── backend/                  ← Spring Boot application
+│   ├── business-rules.md     <- requirements, booking rules and lifecycle
+│   ├── architecture.md       <- components, flows, security, configuration
+│   ├── api.md                <- REST API design
+│   ├── database.md           <- target PostgreSQL schema
+│   ├── glossary.md           <- domain terms (EN ↔ PT)
+│   └── adr/                  <- architecture decision records
+└── backend/                  <- Spring Boot application
     ├── build.gradle
     ├── compose.yaml
     └── src/
