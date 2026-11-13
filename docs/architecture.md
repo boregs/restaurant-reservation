@@ -2,7 +2,7 @@
 
 How the platform is built: components, backend modules, the main flows, domain events, security and configuration. Business behaviour is defined in [business-rules.md](business-rules.md); this document explains how it is implemented.
 
-Status markers: ✅ implemented · 🚧 in progress · 📋 planned.
+Status values: **Implemented**, **In progress** (partially implemented) or **Planned** (designed, not implemented).
 
 ## Contents
 
@@ -37,12 +37,12 @@ flowchart LR
 
 | Component | Responsibility | Status |
 |---|---|---|
-| Customer site | Restaurant page, floor plan, booking form, management link pages, booking history. | 📋 |
-| Admin panel | Day view, booking list, floor plan editor, settings, staff, audit log. | 📋 |
-| Backend API | All business rules, REST API, scheduled jobs, event publishing and the notification consumer. One deployable (modular monolith). | 🚧 |
-| PostgreSQL | Source of truth; enforces no double booking with an exclusion constraint. | 🚧 |
-| Kafka | Carries domain events. The first consumer is the notification module; later consumers (analytics, integrations) can subscribe without changing the booking code. | 📋 |
-| Email provider | Delivers emails (SMTP). Mailpit in local development. | 📋 |
+| Customer site | Restaurant page, floor plan, booking form, management link pages, booking history. | Planned |
+| Admin panel | Day view, booking list, floor plan editor, settings, staff, audit log. | Planned |
+| Backend API | All business rules, REST API, scheduled jobs, event publishing and the notification consumer. One deployable (modular monolith). | In progress |
+| PostgreSQL | Source of truth; enforces no double booking with an exclusion constraint. | In progress |
+| Kafka | Carries domain events. The first consumer is the notification module; later consumers (analytics, integrations) can subscribe without changing the booking code. | Planned |
+| Email provider | Delivers emails (SMTP). Mailpit in local development. | Planned |
 
 The backend is a single Spring Boot application split into modules with clear boundaries. Splitting into separate services is not planned; Kafka keeps that option open (see [ADR-0003](adr/0003-kafka-for-domain-events.md)).
 
@@ -65,7 +65,7 @@ br.com.rafael.restaurant_booking
 └── shared         errors, outbox, clock, security helpers, config
 ```
 
-> 🚧 The current code uses layer packages (`model`, `dto`, `controller`, `enums`, `interfaces`). It should move to the layout above as modules are implemented.
+> **In progress:** the current code uses layer packages (`model`, `dto`, `controller`, `enums`, `interfaces`). It should move to the layout above as modules are implemented.
 
 Rules between modules:
 - Controllers only call services of their own module.
@@ -253,7 +253,7 @@ Decision and alternatives: [ADR-0004](adr/0004-jwt-authentication.md).
 
 ## Local development environment
 
-📋 Target `backend/compose.yaml` services (pinned image versions, not `latest`):
+**Planned.** Target `backend/compose.yaml` services (pinned image versions, not `latest`):
 
 | Service | Purpose | Port |
 |---|---|---|
