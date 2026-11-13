@@ -2,45 +2,43 @@
 
 A multi-restaurant table booking platform. Customers choose a table on a restaurant's floor plan, verify their email and manage their booking from the links they receive by email. Restaurant staff manage tables, opening hours and bookings from an admin panel.
 
-| Marker | Meaning |
-|---|---|
-| ✅ | Implemented |
-| 🚧 | In progress / partially implemented |
-| 📋 | Planned (designed, not implemented) |
+The documentation describes the full target design. Each item has a status: **Implemented**, **In progress** (partially implemented) or **Planned** (designed, not implemented).
 
 ## Features
 
+All features below are **Planned**.
+
 ### For customers
-- 📋 Browse a restaurant's floor plan and pick the table (or table combination) they want.
-- 📋 Book for a date, time and party size within the restaurant's opening hours.
-- 📋 Verify their email with a one-time code to secure the booking.
-- 📋 Confirm attendance, cancel or reschedule from the link in their emails.
-- 📋 See their past and upcoming bookings across all restaurants, by verifying their email.
+- Browse a restaurant's floor plan and pick the table (or table combination) they want.
+- Book for a date, time and party size within the restaurant's opening hours.
+- Verify their email with a one-time code to secure the booking.
+- Confirm attendance, cancel or reschedule from the link in their emails.
+- See their past and upcoming bookings across all restaurants, by verifying their email.
 
 ### For restaurants
-- 📋 Configure opening hours, closures, booking duration and other booking rules.
-- 📋 Draw the floor plan: dining areas, tables, seats and combinable tables.
-- 📋 View, create (phone and walk-in), cancel and reschedule bookings.
-- 📋 Check guests in and mark no-shows.
-- 📋 Manage staff accounts with the **Owner** and **Host** roles.
-- 📋 Audit log of every change made by staff.
+- Configure opening hours, closures, booking duration and other booking rules.
+- Draw the floor plan: dining areas, tables, seats and combinable tables.
+- View, create (phone and walk-in), cancel and reschedule bookings.
+- Check guests in and mark no-shows.
+- Manage staff accounts with the **Owner** and **Host** roles.
+- Audit log of every change made by staff.
 
 ### Platform
-- 📋 Email confirmation, reminder and cancellation messages.
-- 📋 Automatic cancellation when a booking is not confirmed in time.
-- 📋 Rate limiting on public endpoints and JWT authentication for staff.
+- Email confirmation, reminder and cancellation messages.
+- Automatic cancellation when a booking is not confirmed in time.
+- Rate limiting on public endpoints and JWT authentication for staff.
 
 ## Tech stack
 
 | Layer | Technology | Status |
 |---|---|---|
-| Backend | Java 21, Spring Boot 4 (Web MVC, Data JPA, Validation, Security) | 🚧 |
-| Database | PostgreSQL, migrations with Flyway | 🚧 |
-| Messaging | Apache Kafka (domain events and email notifications) | 📋 |
-| Authentication | Spring Security with JWT | 📋 |
-| API docs | OpenAPI via springdoc (`/swagger-ui.html`) | 📋 |
-| Frontend | React + TypeScript (customer site and admin panel) | 📋 |
-| Email | SMTP provider; Mailpit for local development | 📋 |
+| Backend | Java 21, Spring Boot 4 (Web MVC, Data JPA, Validation, Security) | In progress |
+| Database | PostgreSQL, migrations with Flyway | In progress |
+| Messaging | Apache Kafka (domain events and email notifications) | Planned |
+| Authentication | Spring Security with JWT | Planned |
+| API docs | OpenAPI via springdoc (`/swagger-ui.html`) | Planned |
+| Frontend | React + TypeScript (customer site and admin panel) | Planned |
+| Email | SMTP provider; Mailpit for local development | Planned |
 
 The reasons behind the main choices are recorded in [Architecture Decision Records](docs/adr/).
 
@@ -91,7 +89,7 @@ cd backend
 ./gradlew test
 ```
 
-> 🚧 The backend does not start cleanly yet: the SQL script and the JPA entities disagree, and the script is not a valid Flyway migration. See [database.md → Current state vs. target](docs/database.md#current-state-vs-target).
+> **Note:** the backend does not start cleanly yet: the SQL script and the JPA entities disagree, and the script is not a valid Flyway migration. See [database.md → Current state vs. target](docs/database.md#current-state-vs-target).
 
 ## Documentation
 

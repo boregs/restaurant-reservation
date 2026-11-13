@@ -2,7 +2,7 @@
 
 Target PostgreSQL schema for the platform. It implements the rules in [business-rules.md](business-rules.md); rule IDs are cited where the schema enforces them.
 
-> **Status:** 📋 target design. The current script (`backend/src/main/resources/db/migration/reservation-system.sql`) and the JPA entities implement an earlier, single-restaurant version and will be replaced. See [Current state vs. target](#current-state-vs-target).
+> **Status:** Planned (target design). The current script (`backend/src/main/resources/db/migration/reservation-system.sql`) and the JPA entities implement an earlier, single-restaurant version and will be replaced. See [Current state vs. target](#current-state-vs-target).
 
 ## Contents
 

@@ -2,7 +2,7 @@
 
 Requirements and rules for the restaurant table booking platform. Every item has a stable ID: reference it in commits, issues and pull requests (e.g. `Refs: FR-08, BR-12`).
 
-Status markers: ✅ implemented · 🚧 in progress · 📋 planned.
+Status values: **Implemented**, **In progress** (partially implemented) or **Planned** (designed, not implemented).
 
 ## Contents
 
@@ -62,55 +62,55 @@ Validation: all values are positive; `confirmationDeadlineMinutes < minLeadTimeM
 
 | ID | Requirement | Status |
 |---|---|---|
-| FR-01 | The customer can view a restaurant's public page: name, address, contact, opening hours and booking rules (max party size, duration). | 📋 |
-| FR-02 | The customer can list the available start times for a date and party size. | 📋 |
-| FR-03 | The customer can view the floor plan for a chosen start time and party size, showing which tables and combinations are available, too small or taken. | 📋 |
-| FR-04 | The customer can create a booking by choosing a start time, party size and **one table or one table combination** on the floor plan, and giving first name, last name, email, phone and optional notes. | 📋 |
-| FR-05 | The customer verifies the booking by entering the code sent to their email, and can request a new code. | 📋 |
-| FR-06 | After verification the customer receives an email with the booking details and a management link. | 📋 |
-| FR-07 | The customer can confirm attendance from the management link (at any time before the confirmation deadline). | 📋 |
-| FR-08 | The customer can cancel the booking from the management link until the booking start. | 📋 |
-| FR-09 | The customer can reschedule from the management link: change start time, table/combination and party size. | 📋 |
-| FR-10 | The customer can view the booking's details and status from the management link. | 📋 |
-| FR-11 | The customer can view their past and upcoming bookings across all restaurants after verifying their email with a code. | 📋 |
+| FR-01 | The customer can view a restaurant's public page: name, address, contact, opening hours and booking rules (max party size, duration). | Planned |
+| FR-02 | The customer can list the available start times for a date and party size. | Planned |
+| FR-03 | The customer can view the floor plan for a chosen start time and party size, showing which tables and combinations are available, too small or taken. | Planned |
+| FR-04 | The customer can create a booking by choosing a start time, party size and **one table or one table combination** on the floor plan, and giving first name, last name, email, phone and optional notes. | Planned |
+| FR-05 | The customer verifies the booking by entering the code sent to their email, and can request a new code. | Planned |
+| FR-06 | After verification the customer receives an email with the booking details and a management link. | Planned |
+| FR-07 | The customer can confirm attendance from the management link (at any time before the confirmation deadline). | Planned |
+| FR-08 | The customer can cancel the booking from the management link until the booking start. | Planned |
+| FR-09 | The customer can reschedule from the management link: change start time, table/combination and party size. | Planned |
+| FR-10 | The customer can view the booking's details and status from the management link. | Planned |
+| FR-11 | The customer can view their past and upcoming bookings across all restaurants after verifying their email with a code. | Planned |
 
 ### Staff (Owner and Host)
 
 | ID | Requirement | Roles | Status |
 |---|---|---|---|
-| FR-20 | Staff can log in with email and password, refresh the session and log out. | All staff | 📋 |
-| FR-21 | Staff can view, and the Owner can edit, the restaurant profile and [settings](#restaurant-settings). | Owner (edit), Host (view) | 📋 |
-| FR-22 | The Owner can define weekly opening hours (several ranges per day) and closures (full or partial days). | Owner | 📋 |
-| FR-23 | The Owner can create, rename, reorder and delete dining areas. | Owner | 📋 |
-| FR-24 | The Owner can create and edit tables: label, area, seats, minimum party size, shape and position on the floor plan. | Owner | 📋 |
-| FR-25 | The Owner can deactivate and reactivate tables. | Owner | 🚧 stub entity only |
-| FR-26 | The Owner can define table combinations (which tables can be joined and the combined seat count). | Owner | 📋 |
-| FR-27 | Staff can list bookings filtered by period, status, area and source, including a day view on the floor plan. | Owner, Host | 📋 |
-| FR-28 | Staff can view a booking's details: customer contact, notes, tables and full change history. | Owner, Host | 📋 |
-| FR-29 | Staff can create bookings for phone and walk-in customers. | Owner, Host | 📋 |
-| FR-30 | Staff can cancel a booking, giving a reason. | Owner, Host | 📋 |
-| FR-31 | Staff can reschedule a booking (time, tables, party size). | Owner, Host | 📋 |
-| FR-32 | Staff can check a party in and mark a no-show. | Owner, Host | 📋 |
-| FR-33 | Staff can view booking statistics for a day or period: totals by status, by source, covers (sum of party sizes) and rescheduled bookings. | Owner, Host | 📋 |
-| FR-34 | The Owner can invite staff by email, change their role and remove them from the restaurant. | Owner | 📋 |
-| FR-35 | The Owner can view the audit log of staff actions. | Owner | 📋 |
-| FR-36 | Staff can reset a forgotten password through an emailed link. | All staff | 📋 |
+| FR-20 | Staff can log in with email and password, refresh the session and log out. | All staff | Planned |
+| FR-21 | Staff can view, and the Owner can edit, the restaurant profile and [settings](#restaurant-settings). | Owner (edit), Host (view) | Planned |
+| FR-22 | The Owner can define weekly opening hours (several ranges per day) and closures (full or partial days). | Owner | Planned |
+| FR-23 | The Owner can create, rename, reorder and delete dining areas. | Owner | Planned |
+| FR-24 | The Owner can create and edit tables: label, area, seats, minimum party size, shape and position on the floor plan. | Owner | Planned |
+| FR-25 | The Owner can deactivate and reactivate tables. | Owner | In progress (entity only) |
+| FR-26 | The Owner can define table combinations (which tables can be joined and the combined seat count). | Owner | Planned |
+| FR-27 | Staff can list bookings filtered by period, status, area and source, including a day view on the floor plan. | Owner, Host | Planned |
+| FR-28 | Staff can view a booking's details: customer contact, notes, tables and full change history. | Owner, Host | Planned |
+| FR-29 | Staff can create bookings for phone and walk-in customers. | Owner, Host | Planned |
+| FR-30 | Staff can cancel a booking, giving a reason. | Owner, Host | Planned |
+| FR-31 | Staff can reschedule a booking (time, tables, party size). | Owner, Host | Planned |
+| FR-32 | Staff can check a party in and mark a no-show. | Owner, Host | Planned |
+| FR-33 | Staff can view booking statistics for a day or period: totals by status, by source, covers (sum of party sizes) and rescheduled bookings. | Owner, Host | Planned |
+| FR-34 | The Owner can invite staff by email, change their role and remove them from the restaurant. | Owner | Planned |
+| FR-35 | The Owner can view the audit log of staff actions. | Owner | Planned |
+| FR-36 | Staff can reset a forgotten password through an emailed link. | All staff | Planned |
 
 ### Platform admin
 
 | ID | Requirement | Status |
 |---|---|---|
-| FR-40 | The platform admin can create a restaurant (name, slug, time zone) and invite its first Owner. | 📋 |
-| FR-41 | The platform admin can deactivate a restaurant; it then accepts no new bookings and disappears from public listings. | 📋 |
+| FR-40 | The platform admin can create a restaurant (name, slug, time zone) and invite its first Owner. | Planned |
+| FR-41 | The platform admin can deactivate a restaurant; it then accepts no new bookings and disappears from public listings. | Planned |
 
 ### System
 
 | ID | Requirement | Status |
 |---|---|---|
-| FR-50 | The system sends the emails listed in [Notifications](#notifications). | 📋 |
-| FR-51 | The system releases holds whose verification time expired (BR-30). | 📋 |
-| FR-52 | The system sends reminders (BR-33) and auto-cancels unconfirmed bookings at the confirmation deadline (BR-34). | 📋 |
-| FR-53 | The system publishes a domain event for every booking change (see [architecture.md](architecture.md#domain-events)). | 📋 |
+| FR-50 | The system sends the emails listed in [Notifications](#notifications). | Planned |
+| FR-51 | The system releases holds whose verification time expired (BR-30). | Planned |
+| FR-52 | The system sends reminders (BR-33) and auto-cancels unconfirmed bookings at the confirmation deadline (BR-34). | Planned |
+| FR-53 | The system publishes a domain event for every booking change (see [architecture.md](architecture.md#domain-events)). | Planned |
 
 ## Business rules
 
@@ -249,24 +249,24 @@ All customer notifications are sent by email, in Portuguese, with times in the r
 
 | ID | Category | Requirement | Status |
 |---|---|---|---|
-| NFR-01 | Performance | Public availability and booking endpoints: p95 ≤ 400 ms and p99 ≤ 1 s at 100 requests/s sustained, with 1,000 concurrent users. Admin endpoints: p95 ≤ 800 ms. | 📋 |
-| NFR-02 | Availability | 99.5 % monthly uptime for the public API. | 📋 |
-| NFR-03 | Scalability | The backend is stateless and can run several instances. Scheduled jobs and event consumers are safe to run on more than one instance. | 📋 |
-| NFR-04 | Consistency | Double booking is impossible even under concurrent requests (BR-02 enforced by a database constraint). | 📋 |
-| NFR-05 | Security | Staff authenticate with JWT; passwords hashed with Argon2id (or bcrypt); verification codes, management tokens and refresh tokens are stored only as hashes; HTTPS only; CORS limited to the frontend origins. | 📋 |
-| NFR-06 | Rate limiting | Public endpoints: 60 requests/min per IP. Code sending: see BR-16. Staff login: 5 failed attempts per 15 min per account and per IP. Exceeding a limit returns `429` with `Retry-After`. | 📋 |
-| NFR-07 | Data protection (LGPD) | Collect only name, email, phone and notes. Data encrypted in transit (TLS) and at rest (encrypted storage and backups). No personal data in logs. Customer data is anonymized 24 months after the customer's last booking, or on request. | 📋 |
-| NFR-08 | Tenant isolation | Staff only ever see data of restaurants they are members of; every restaurant-owned query is filtered by restaurant. Covered by automated tests. | 📋 |
-| NFR-09 | Auditability | Booking history (BR-42) and the staff audit log (BR-55) are kept for at least 5 years and cannot be edited through the application. | 📋 |
-| NFR-10 | Backup and recovery | Daily full backups plus point-in-time recovery; 30-day retention; RPO ≤ 15 min, RTO ≤ 4 h. Restores are tested every quarter. | 📋 |
-| NFR-11 | Observability | Structured JSON logs with a request ID; health and metrics endpoints (Spring Boot Actuator / Micrometer); alerts on error rate, latency, Kafka consumer lag and failed emails. | 📋 |
-| NFR-12 | Email delivery | Emails are sent asynchronously with retries and exponential backoff; 95 % delivered to the provider within 1 minute of the triggering change; sending is idempotent (no duplicates on retry). | 📋 |
-| NFR-13 | Accessibility | Customer site and admin panel meet WCAG 2.1 AA. The floor plan is also usable as a keyboard-navigable list of tables. | 📋 |
-| NFR-14 | Status colours | Booking states are shown with colour **and** a text label and icon: green = `BOOKED`/`CONFIRMED`, red = cancelled states and `NO_SHOW`, yellow badge = rescheduled, grey = `PENDING_VERIFICATION`, blue = `COMPLETED`. | 📋 |
-| NFR-15 | Usability | From the email, a customer cancels in at most 3 clicks (open link → Cancel → confirm). Booking from the restaurant page takes at most 5 steps. The customer site is mobile-first. | 📋 |
-| NFR-16 | Localization | UI and emails in Brazilian Portuguese; dates and times always shown in the restaurant's time zone. Code and API in English. | 📋 |
-| NFR-17 | Compatibility | Latest two versions of Chrome, Firefox, Safari and Edge, desktop and mobile. | 📋 |
-| NFR-18 | Maintainability | Business rules covered by unit tests; API and persistence covered by integration tests against real PostgreSQL and Kafka (Testcontainers); schema changes only through versioned Flyway migrations; OpenAPI spec generated from the code. | 📋 |
+| NFR-01 | Performance | Public availability and booking endpoints: p95 ≤ 400 ms and p99 ≤ 1 s at 100 requests/s sustained, with 1,000 concurrent users. Admin endpoints: p95 ≤ 800 ms. | Planned |
+| NFR-02 | Availability | 99.5 % monthly uptime for the public API. | Planned |
+| NFR-03 | Scalability | The backend is stateless and can run several instances. Scheduled jobs and event consumers are safe to run on more than one instance. | Planned |
+| NFR-04 | Consistency | Double booking is impossible even under concurrent requests (BR-02 enforced by a database constraint). | Planned |
+| NFR-05 | Security | Staff authenticate with JWT; passwords hashed with Argon2id (or bcrypt); verification codes, management tokens and refresh tokens are stored only as hashes; HTTPS only; CORS limited to the frontend origins. | Planned |
+| NFR-06 | Rate limiting | Public endpoints: 60 requests/min per IP. Code sending: see BR-16. Staff login: 5 failed attempts per 15 min per account and per IP. Exceeding a limit returns `429` with `Retry-After`. | Planned |
+| NFR-07 | Data protection (LGPD) | Collect only name, email, phone and notes. Data encrypted in transit (TLS) and at rest (encrypted storage and backups). No personal data in logs. Customer data is anonymized 24 months after the customer's last booking, or on request. | Planned |
+| NFR-08 | Tenant isolation | Staff only ever see data of restaurants they are members of; every restaurant-owned query is filtered by restaurant. Covered by automated tests. | Planned |
+| NFR-09 | Auditability | Booking history (BR-42) and the staff audit log (BR-55) are kept for at least 5 years and cannot be edited through the application. | Planned |
+| NFR-10 | Backup and recovery | Daily full backups plus point-in-time recovery; 30-day retention; RPO ≤ 15 min, RTO ≤ 4 h. Restores are tested every quarter. | Planned |
+| NFR-11 | Observability | Structured JSON logs with a request ID; health and metrics endpoints (Spring Boot Actuator / Micrometer); alerts on error rate, latency, Kafka consumer lag and failed emails. | Planned |
+| NFR-12 | Email delivery | Emails are sent asynchronously with retries and exponential backoff; 95 % delivered to the provider within 1 minute of the triggering change; sending is idempotent (no duplicates on retry). | Planned |
+| NFR-13 | Accessibility | Customer site and admin panel meet WCAG 2.1 AA. The floor plan is also usable as a keyboard-navigable list of tables. | Planned |
+| NFR-14 | Status colours | Booking states are shown with colour **and** a text label and icon: green = `BOOKED`/`CONFIRMED`, red = cancelled states and `NO_SHOW`, yellow badge = rescheduled, grey = `PENDING_VERIFICATION`, blue = `COMPLETED`. | Planned |
+| NFR-15 | Usability | From the email, a customer cancels in at most 3 clicks (open link → Cancel → confirm). Booking from the restaurant page takes at most 5 steps. The customer site is mobile-first. | Planned |
+| NFR-16 | Localization | UI and emails in Brazilian Portuguese; dates and times always shown in the restaurant's time zone. Code and API in English. | Planned |
+| NFR-17 | Compatibility | Latest two versions of Chrome, Firefox, Safari and Edge, desktop and mobile. | Planned |
+| NFR-18 | Maintainability | Business rules covered by unit tests; API and persistence covered by integration tests against real PostgreSQL and Kafka (Testcontainers); schema changes only through versioned Flyway migrations; OpenAPI spec generated from the code. | Planned |
 
 ## Open questions
 
