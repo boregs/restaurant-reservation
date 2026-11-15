@@ -97,10 +97,10 @@ Errors use [RFC 9457 Problem Details](https://www.rfc-editor.org/rfc/rfc9457) (`
 | POST | `/bookings/{bookingId}/verification` | None (code) | FR-05 | Planned |
 | POST | `/bookings/{bookingId}/verification/resend` | None | FR-05 | Planned |
 | **Customer booking management** |||||
-| GET | `/bookings/{bookingId}` | Booking token or customer session | FR-10 | In progress (stub at `/reservation/status`) |
-| POST | `/bookings/{bookingId}/confirm` | Booking token or customer session | FR-07 | In progress (stub) |
-| POST | `/bookings/{bookingId}/cancel` | Booking token or customer session | FR-08 | In progress (stub) |
-| POST | `/bookings/{bookingId}/reschedule` | Booking token or customer session | FR-09 | In progress (stub) |
+| GET | `/bookings/{bookingId}` | Booking token or customer session | FR-10 | Planned |
+| POST | `/bookings/{bookingId}/confirm` | Booking token or customer session | FR-07 | Planned |
+| POST | `/bookings/{bookingId}/cancel` | Booking token or customer session | FR-08 | Planned |
+| POST | `/bookings/{bookingId}/reschedule` | Booking token or customer session | FR-09 | Planned |
 | **Customer history** |||||
 | POST | `/customer-auth/code` | None | FR-11 | Planned |
 | POST | `/customer-auth/token` | None (code) | FR-11 | Planned |

@@ -83,7 +83,7 @@ Validation: all values are positive; `confirmationDeadlineMinutes < minLeadTimeM
 | FR-22 | The Owner can define weekly opening hours (several ranges per day) and closures (full or partial days). | Owner | Planned |
 | FR-23 | The Owner can create, rename, reorder and delete dining areas. | Owner | Planned |
 | FR-24 | The Owner can create and edit tables: label, area, seats, minimum party size, shape and position on the floor plan. | Owner | Planned |
-| FR-25 | The Owner can deactivate and reactivate tables. | Owner | In progress (entity only) |
+| FR-25 | The Owner can deactivate and reactivate tables. | Owner | Planned |
 | FR-26 | The Owner can define table combinations (which tables can be joined and the combined seat count). | Owner | Planned |
 | FR-27 | Staff can list bookings filtered by period, status, area and source, including a day view on the floor plan. | Owner, Host | Planned |
 | FR-28 | Staff can view a booking's details: customer contact, notes, tables and full change history. | Owner, Host | Planned |

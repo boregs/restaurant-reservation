@@ -39,8 +39,8 @@ flowchart LR
 |---|---|---|
 | Customer site | Restaurant page, floor plan, booking form, management link pages, booking history. | Planned |
 | Admin panel | Day view, booking list, floor plan editor, settings, staff, audit log. | Planned |
-| Backend API | All business rules, REST API, scheduled jobs, event publishing and the notification consumer. One deployable (modular monolith). | In progress |
-| PostgreSQL | Source of truth; enforces no double booking with an exclusion constraint. | In progress |
+| Backend API | All business rules, REST API, scheduled jobs, event publishing and the notification consumer. One deployable (modular monolith). | Planned |
+| PostgreSQL | Source of truth; enforces no double booking with an exclusion constraint. | Planned |
 | Kafka | Carries domain events. The first consumer is the notification module; later consumers (analytics, integrations) can subscribe without changing the booking code. | Planned |
 | Email provider | Delivers emails (SMTP). Mailpit in local development. | Planned |
 
@@ -64,8 +64,6 @@ br.com.rafael.restaurant_booking
 ├── platform       restaurant onboarding (platform admin)
 └── shared         errors, outbox, clock, security helpers, config
 ```
-
-> **In progress:** the current code uses layer packages (`model`, `dto`, `controller`, `enums`, `interfaces`). It should move to the layout above as modules are implemented.
 
 Rules between modules:
 - Controllers only call services of their own module.
