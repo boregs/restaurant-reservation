@@ -1,0 +1,63 @@
+name: Feature
+description: Something new a customer, restaurant or the platform should be able to do.
+title: "feat(<scope>): <short description>"
+labels: ["feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use the commit format for the title, e.g. `feat(booking): adds booking cancellation by the customer`.
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      description: Area of the system affected (same scopes as in CONTRIBUTING.md).
+      options:
+        - restaurant
+        - floorplan
+        - availability
+        - booking
+        - customer
+        - verification
+        - notification
+        - auth
+        - audit
+        - db
+        - api
+        - ui
+        - docs
+        - Several areas / not sure
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What should be possible after this is done, and for whom?
+      placeholder: As a customer, I want to cancel my booking from the email link so that the table is freed for others.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Concrete conditions that must be true for this to be done.
+      value: |
+        - [ ] 
+    validations:
+      required: true
+  - type: input
+    id: refs
+    attributes:
+      label: Documentation references
+      description: Requirement and rule IDs from docs/business-rules.md, or ADRs, that this relates to.
+      placeholder: "FR-04, BR-02, ADR-0002"
+    validations:
+      required: false
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Design ideas, open questions, dependencies on other issues.
+    validations:
+      required: false

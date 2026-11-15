@@ -1,0 +1,70 @@
+name: Task
+description: Any other piece of work (setup, refactoring, docs, tests, CI, chores).
+title: "<type>(<scope>): <short description>"
+labels: ["task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use the commit format for the title, e.g. `refactor(booking): extracts state transitions into a state machine`.
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options:
+        - refactor
+        - docs
+        - test
+        - build
+        - ci
+        - perf
+        - style
+        - chore
+    validations:
+      required: true
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      description: Area of the system affected (same scopes as in CONTRIBUTING.md).
+      options:
+        - restaurant
+        - floorplan
+        - availability
+        - booking
+        - customer
+        - verification
+        - notification
+        - auth
+        - audit
+        - db
+        - api
+        - ui
+        - docs
+        - Several areas / not sure
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to be done and why.
+    validations:
+      required: true
+  - type: textarea
+    id: checklist
+    attributes:
+      label: Checklist
+      description: Steps or sub-tasks. Each one can be turned into its own issue from the project board.
+      value: |
+        - [ ] 
+    validations:
+      required: false
+  - type: input
+    id: refs
+    attributes:
+      label: Documentation references
+      description: Requirement and rule IDs from docs/business-rules.md, or ADRs, that this relates to.
+      placeholder: "FR-04, BR-02, ADR-0002"
+    validations:
+      required: false
