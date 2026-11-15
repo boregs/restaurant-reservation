@@ -2,7 +2,7 @@
 
 Target PostgreSQL schema for the platform. It implements the rules in [business-rules.md](business-rules.md); rule IDs are cited where the schema enforces them.
 
-> **Status:** Planned (target design). The current script (`backend/src/main/resources/db/migration/reservation-system.sql`) and the JPA entities implement an earlier, single-restaurant version and will be replaced. See [Current state vs. target](#current-state-vs-target).
+> **Status:** Planned (target design). No migrations exist yet; the backend is being rebuilt from scratch.
 
 ## Contents
 
@@ -18,7 +18,6 @@ Target PostgreSQL schema for the platform. It implements the rules in [business-
 - [Tenant consistency](#tenant-consistency)
 - [Indexes](#indexes)
 - [Migrations](#migrations)
-- [Current state vs. target](#current-state-vs-target)
 
 ## Conventions
 
@@ -447,39 +446,3 @@ Beyond those created by primary keys and unique constraints:
 - Migrations do **not** create or drop the database or connect with `\c`. The database and its owner are created by the environment (Docker Compose, managed service).
 - No `LC_COLLATE`/`LC_CTYPE` tied to an OS locale: the default (or an ICU collation such as `und-x-icu`) works on any server image.
 - JPA runs with `spring.jpa.hibernate.ddl-auto=validate`, so entities must match the migrations exactly; the persistence tests catch mismatches.
-
-## Current state vs. target
-
-The database is being rewritten. These are the differences between what is in the repository today and this design, so nothing is lost in the rewrite.
-
-### Schema (`reservation-system.sql`)
-
-| Current | Target | Note |
-|---|---|---|
-| Not a Flyway migration (wrong file name; `DROP/CREATE DATABASE`, `\c`, `pt_BR.UTF-8` locale) | Versioned `V<n>__*.sql` files | Flyway ignores the current file. |
-| Single restaurant | `restaurants` + `restaurant_id` everywhere | [ADR-0001](adr/0001-multi-restaurant-tenancy.md) |
-| `SERIAL` / `BIGSERIAL` | `BIGINT GENERATED ALWAYS AS IDENTITY` | |
-| `restaurant_tables` without `created_at`/`updated_at` | Standard audit columns | The current `TableModel` maps them, so Hibernate validation fails at startup. |
-| `table_status` `AVAILABLE`/`NOT-AVAILABLE` | `active BOOLEAN` | The hyphen did not match the Java enum `NOT_AVAILABLE`; availability is computed, not stored. |
-| `table_location` `INTERIOR`/`EXTERIOR` | `dining_areas` with `is_outdoor` | Restaurants have more than two areas. |
-| No table label or position | `label`, `shape`, `pos_x`, `pos_y`, `width`, `height`, `rotation` | Needed for the seat map. |
-| `booking_tables_customers` with `fk_customer_id` | `booking_tables` with `period` and `blocks_table` | The customer column duplicated `bookings.customer_id`. |
-| `bookings.booking_datetime` only | `starts_at`, `ends_at`, `blocked_until` | Overlaps could not be detected without an end. |
-| Status `ACTIVE`/`CANCELLED`/`RESCHEDULED` + `confirmed` boolean | 8-state lifecycle, `reschedule_count` | [Booking lifecycle](business-rules.md#booking-lifecycle) |
-| `customers.cpf`, `is_phone_verified`, `is_email_verified` | Removed; `email_verified_at` | BR-20, [ADR-0005](adr/0005-email-identity-and-data-minimization.md) |
-| `customers.email VARCHAR UNIQUE` | `CITEXT UNIQUE` | Case-insensitive uniqueness. |
-| `users` without roles | `restaurant_memberships`, `is_platform_admin` | |
-| `pgcrypto` extension | `citext`, `btree_gist` | `gen_random_uuid()` is built in since PostgreSQL 13. |
-| `updated_at` never updated | `set_updated_at()` trigger | |
-
-### Backend entities and configuration
-
-| Current | Target |
-|---|---|
-| `ReservationModel` → table `bookings` | `BookingModel` (one name for the concept, see [glossary](glossary.md#naming-conventions)) |
-| `BookingTableModel` / `BookingTableId` with customer | Maps `booking_tables` without customer |
-| `TableModel.id` is `Integer` | `Long`, like every other ID |
-| `TableStatus`, `TableLocation` enums | `active` flag and `DiningAreaModel` |
-| `BookingStatus` with 3 values | 8 values of the new lifecycle |
-| `CustomerModel.cpf`, verification flags; `CustomerDTO` exposes CPF | Removed |
-| `compose.yaml`: database `mydatabase`, user `myuser`, `postgres:latest`, RabbitMQ | Database `restaurant_booking`, pinned versions, Kafka and Mailpit instead of RabbitMQ |
