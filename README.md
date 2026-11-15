@@ -32,8 +32,8 @@ All features below are **Planned**.
 
 | Layer | Technology | Status |
 |---|---|---|
-| Backend | Java 21, Spring Boot 4 (Web MVC, Data JPA, Validation, Security) | In progress |
-| Database | PostgreSQL, migrations with Flyway | In progress |
+| Backend | Java 21, Spring Boot 4 (Web MVC, Data JPA, Validation, Security) | Planned |
+| Database | PostgreSQL, migrations with Flyway | Planned |
 | Messaging | Apache Kafka (domain events and email notifications) | Planned |
 | Authentication | Spring Security with JWT | Planned |
 | API docs | OpenAPI via springdoc (`/swagger-ui.html`) | Planned |
@@ -54,42 +54,13 @@ The reasons behind the main choices are recorded in [Architecture Decision Recor
 │   ├── database.md           <- target PostgreSQL schema
 │   ├── glossary.md           <- domain terms (EN ↔ PT)
 │   └── adr/                  <- architecture decision records
-└── backend/                  <- Spring Boot application
-    ├── build.gradle
-    ├── compose.yaml
-    └── src/
 ```
 
-## Getting started (backend)
+The backend will be added again under `backend/` as a new Spring Boot project.
 
-### Requirements
-- JDK 21
-- Docker (for PostgreSQL; Kafka and Mailpit once they are added to `compose.yaml`)
+## Getting started
 
-### Configuration
-The application reads its database connection from environment variables or from a `backend/.env` file (ignored by Git):
-
-```properties
-DB_URL=jdbc:postgresql://localhost:5432/restaurant_booking
-DB_USER=restaurant_booking
-DB_PASSWORD=change-me
-```
-
-The full list of planned variables is in [architecture.md → Configuration](docs/architecture.md#configuration).
-
-### Run
-
-```bash
-cd backend
-./gradlew bootRun
-```
-
-```bash
-cd backend
-./gradlew test
-```
-
-> **Note:** the backend does not start cleanly yet: the SQL script and the JPA entities disagree, and the script is not a valid Flyway migration. See [database.md → Current state vs. target](docs/database.md#current-state-vs-target).
+There is no runnable code yet. The previous backend was removed so the API can be rebuilt from scratch following the documented design. Setup and run instructions will be added together with the new backend.
 
 ## Documentation
 
